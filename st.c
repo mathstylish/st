@@ -710,7 +710,10 @@ execsh(char *cmd, char **args)
 		prog = args[0];
 	else if (utmp)
 		prog = utmp;
-	else
+  else if (program) {
+    prog = program;
+  }
+  else
 		prog = sh;
 	DEFAULT(args, ((char *[]) {prog, NULL}));
 

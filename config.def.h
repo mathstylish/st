@@ -5,15 +5,29 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font =
-    "JetBrainsMono Nerd Font :pixelsize=15:antialias=true:autohint=true";
-static char *font2[] = {
-    "JetBrainsMono Nerd Font :pixelsize=15:antialias=true:autohint=true"};
+/* static char *font = */
+/*     "JetBrainsMono Nerd Font :pixelsize=15:antialias=true:autohint=true"; */
+/* static char *font2[] = { */
+/*     "JetBrainsMono Nerd Font :pixelsize=15:antialias=true:autohint=true"}; */
+
+/* static char *font = "VictorMono Nerd Font:pixelsize=14:antialias=true:autohint=true"; */
+/* static char *font2[] = { "VictorMono Nerd Font:pixelsize=14:antialias=true:autohint=true" }; */
+
+/* static char *font = "BlexMono Nerd Font:pixelsize=14:antialias=true:autohint=true"; */
+/* static char *font2[] = { "BlexMono Nerd Font:pixelsize=14:antialias=true:autohint=true" }; */
+
+/* static char *font = "CommitMono Nerd Font:pixelsize=14:antialias=true:autohint=true"; */
+/* static char *font2[] = { "CommitMono Nerd Font:pixelsize=14:antialias=true:autohint=true" }; */
+
+static char *font = "Iosevka Nerd Font:pixelsize=14:antialias=true:autohint=true";
+static char *font2[] = { "Iosevka Nerd Font:pixelsize=14:antialias=true:autohint=true" };
+
 static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
+ * 2: program passed via the program Xresources option
  * 2: utmp option
  * 3: SHELL environment variable
  * 4: value of shell in /etc/passwd
@@ -22,6 +36,7 @@ static int borderpx = 0;
 static char *shell = "/bin/sh";
 char *utmp = NULL;
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
+char *program = NULL;
 
 /* identification sequence returned in DA and DECID */
 char *vtiden = "\033[?6c";
@@ -202,6 +217,7 @@ ResourcePref resources[] = {
     {"cursorColor", STRING, &colorname[256]},
     {"termname", STRING, &termname},
     {"shell", STRING, &shell},
+    {"program", STRING, &program},
     {"blinktimeout", INTEGER, &blinktimeout},
     {"bellvolume", INTEGER, &bellvolume},
     {"tabspaces", INTEGER, &tabspaces},
